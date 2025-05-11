@@ -5,5 +5,7 @@
 }
 
 .active {
-  color: var(--active-link-color);
+  color: red;
+  text-decoration: underline;
+  text-underline-offset: 5px;
 }

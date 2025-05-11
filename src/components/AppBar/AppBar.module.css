@@ -1,10 +1,8 @@
 .header {
   font-size: 18px;
-  position: fixed;
-  top: 0;
   display: flex;
   align-items: center;
-  gap: 60px;
+  justify-content: space-between;
   padding: 10px 20px;
-  background-color: #f8f3ec;
+  border-radius: 4px;
 }
