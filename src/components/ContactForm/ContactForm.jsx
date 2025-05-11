@@ -4,7 +4,7 @@ import { useId } from "react";
 import { nanoid } from "nanoid";
 import { form, button, input, errorMessage } from "./ContactForm.module.css";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsOps";
+import { addContact } from "../../redux/contacts/operations";
 
 const initialValues = {
   id: "",

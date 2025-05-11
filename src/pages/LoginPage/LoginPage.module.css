@@ -1,0 +1,20 @@
+.logPageContainer {
+  margin-top: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.logTextContainer {
+  margin-bottom: 40px;
+}
+
+.logPageTitle {
+  text-align: center;
+  margin-bottom: 6px;
+}
+
+.logPageDesc {
+  text-align: center;
+}

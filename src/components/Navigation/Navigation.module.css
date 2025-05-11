@@ -1,0 +1,11 @@
+.navigationContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.active {
+  color: var(--active-link-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

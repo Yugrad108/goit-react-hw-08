@@ -1,11 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const baseURL = "https://6815d14132debfe95dbc8607.mockapi.io";
-
-const api = axios.create({
-  baseURL,
-});
+import { api } from "../api";
+import toast from "react-hot-toast";
 
 export const fetchContacts = createAsyncThunk(
   "contacts/fetchAll",
@@ -26,6 +21,22 @@ export const addContact = createAsyncThunk(
       const res = await api.post("/contacts", contact);
       return res.data;
     } catch (error) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
+
+export const editContact = createAsyncThunk(
+  "contacts/editContact",
+  async (contact, { rejectWithValue }) => {
+    try {
+      const response = await api.patch(`/contacts/${contact.id}`, {
+        name: contact.name,
+        number: contact.number,
+      });
+      return response.data;
+    } catch (error) {
+      toast.error("Oopss... Please, try again!");
       return rejectWithValue(error.message);
     }
   }

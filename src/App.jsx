@@ -1,35 +1,25 @@
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import ContactList from "./components/ContactList/ContactList/";
-import { wrapper, title, innerwrapper } from "./App.module.css";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactForm from "./components/ContactForm/ContactForm";
-import { fetchContacts } from "./redux/contactsOps";
-import { selectIsLoading, selectError } from "./redux/contactsSelectors";
-import Loader from "./components/Loader/Loader";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsRefreshing } from "./redux/auth/selectors";
+import { refreshUser } from "./redux/auth/operations";
+import Layout from "./components/Layout/Layout";
+import RoutesList from "./components/RoutesList/RoutesList";
+import ScrollTopBtn from "./components/ScrollTopBtn/ScrollTopBtn";
 
 function App() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isRefreshing = useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
-  return (
-    <div className={wrapper}>
-      <div className={innerwrapper}>
-        <h1 className={title}>Phonebook</h1>
-        <ContactForm />
-        <SearchBox />
-      </div>
-
-      {isLoading && !error && <Loader />}
-      {error && <ErrorMessage error={error} />}
-      {!isLoading && !error && <ContactList />}
-    </div>
+  return isRefreshing ? null : (
+    <>
+      <Layout />
+      <RoutesList />
+      <ScrollTopBtn />
+    </>
   );
 }
 
