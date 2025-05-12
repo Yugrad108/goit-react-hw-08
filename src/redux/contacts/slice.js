@@ -42,7 +42,7 @@ export const slice = createSlice({
       .addCase(addContact.rejected, handleRejected)
 
       .addCase(logout.fulfilled, (state) => {
-        state.contacts = [];
+        state.items = [];
         state.loading = false;
         state.error = null;
       })
