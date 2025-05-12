@@ -8,11 +8,13 @@ import { useEffect } from "react";
 import { fetchContacts } from "../../redux/contacts/operations";
 import { selectUser } from "../../redux/auth/selectors";
 import { selectIsLoading } from "../../redux/contacts/selectors";
+import { useMediaQuery } from "react-responsive";
 
 const ContactsPage = () => {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
   const loading = useSelector(selectIsLoading);
+  const tablet = useMediaQuery({ maxWidth: 1200 });
 
   useEffect(() => {
     dispatch(fetchContacts());
@@ -20,7 +22,7 @@ const ContactsPage = () => {
 
   return (
     <div className={styles.contactFormContainer}>
-      <p className={styles.name}>Welcome, {user.name}</p>
+      {tablet && <p className={styles.name}>Welcome, {user.name}</p>}
       <ContactForm />
       <SearchBox />
       {loading && <Loader loading={loading} />}

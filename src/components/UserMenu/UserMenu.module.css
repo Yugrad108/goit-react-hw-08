@@ -1,3 +1,10 @@
+.userMenuContainer {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: 50px;
+}
+
 .logOutBtn {
   font-size: 15px;
   padding: 10px 20px;
@@ -16,4 +23,8 @@
 
     outline: none;
   }
+}
+
+.userName {
+  font-size: 18px;
 }

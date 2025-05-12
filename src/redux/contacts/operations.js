@@ -36,7 +36,7 @@ export const editContact = createAsyncThunk(
       });
       return response.data;
     } catch (error) {
-      toast.error("Oopss... Please, try again!");
+      toast.error("Ooomm... Please, try again!");
       return rejectWithValue(error.message);
     }
   }
